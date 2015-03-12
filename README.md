@@ -63,28 +63,37 @@ box-model) together.
 .selector {
     /* Positioning */
     position: absolute;
-    z-index: 10;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
+    z-index: 10;
+    opacity: 1;
 
     /* Display & Box Model */
+    box-sizing: border-box;
     display: inline-block;
     overflow: hidden;
-    box-sizing: border-box;
     width: 100px;
     height: 100px;
+    min-width: 50px;
+    min-height: 50px;
+    margin: 10px;
     padding: 10px;
     border: 10px solid #333;
-    margin: 10px;
+    border-radius: 10;
+
+    /* Typography */
+    font-family: sans-serif;
+    font-size: 16px;
+    line-height: 1.5em;
+    text-align: center;
+    text-decoration: underline;
+    text-transform: uppercase;
 
     /* Other */
     background: #000;
     color: #fff;
-    font-family: sans-serif;
-    font-size: 16px;
-    text-align: right;
 }
 ```
 
@@ -103,7 +112,16 @@ before the closing brace.
 .selector-3 { width: 30%; }
 ```
 
+Width/height, paddings, margins, and top/right/bottom/left pairs can exist in single-line format.
 
+```css
+.selector {
+    position: relative;
+    top: 0; left: 0; right: 0;
+    display: inline-block;
+    width: 100px; height: 150px;
+}
+```
 
 ## SMACSS
 Stylesheets are structured and organized following Jonathan Snook's [Scalable and Modular Architecture for CSS (SMACSS)](https://smacss.com/). This format is taken loosely (as recommended), and is adapted more formally as needed based on the complexity of the application. Currently, these are the major divisions:
@@ -126,7 +144,7 @@ page-specific.css includes styles for laying out a particular page. Aside from t
 Naming follows (loosely) Yandex's [Block Element Modifier (BEM)](http://bem.info/) methodology for namespacing classes:
 
 - A single hyphen is used for adjective-noun separation (e.g., payroll-calculator)
-- A double hypen is used for actual namespacing between blocks, elements, and modifiers (e.g., payroll-calculator--header--dark)
+- A double hypen is used for actual namespacing between blocks and its elements/modifiers (e.g., payroll-calculator--header--dark)
 
 **blocks** are major logical design components/widgets (e.g., tooltip)
 **elements** are the technical/structural components that make up that block (e.g., tooltip--handle, tooltip--bubble)
